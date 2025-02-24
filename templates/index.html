@@ -11,10 +11,15 @@
     <th>ID</th>
     <th>Task</th>
   </tr>
-  {% for key, value in tasks.items() %}
+  {% for id, task_text in tasks.items() %}
   <tr>
-    <td>{{ key }}</td>
-    <td>{{ value }}</td>
+    <td>{{ id }}</td>
+    <td>{{ task_text }}</td>
+    <td>
+            <form method="POST">
+                    <button name="delete" value="{{ id }}"></button> 
+            </form>
+    </td>
   </tr>
   {% endfor %}
 </table>

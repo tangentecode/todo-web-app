@@ -33,6 +33,8 @@ def add_task(cursor: sqlite3.Cursor, task_text: str) -> None:
 def remove_task(cursor: sqlite3.Cursor, task_id: int) -> None:
     """Removes task entry by id"""
     cursor.execute("DELETE FROM tasks WHERE id = ?", (task_id,))
+    # Shift IDs if needed
+    cursor.execute("UPDATE tasks SET id = id - 1 WHERE id > ?", (task_id,))
 
 
 def query_tasks(cursor: sqlite3.Cursor) -> Dict[int, str]:

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+{% block body %}
+<form method="POST">
+        <input type="text" autocomplete="off" autofocus name="task-text" placeholder="Enter the task text">
+        <button type="submit"></button>
+</form>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Task</th>
+  </tr>
+  {% for key, value in tasks.items() %}
+  <tr>
+    <td>{{ key }}</td>
+    <td>{{ value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
